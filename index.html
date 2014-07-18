@@ -1,0 +1,49 @@
+<DOCTYPE html>
+<html>
+<head>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="unjsonify.js"></script>
+
+    <style>
+        li {
+            margin: 10px;
+            border: 1px solid #444;
+        }
+
+        li.expandable p {
+            margin-left: 10px;
+        }
+
+        #prop {
+            color: red;
+        }
+
+        div.expandable {
+            display: none;
+        }
+        
+    </style>
+</head>
+<textarea id="jsonText"></textarea>
+
+<script>
+
+$(document).ready(function() {
+	$(document).on("click", "a.expandable", function(){
+        $(this).parent().children('div').toggle();
+});
+
+$('#jsonText').keypress(function(e) {
+		if(e.charCode === 13) {
+            unjsonify($(this).val(), function(data){
+                 $(document.body).prepend(data);
+            });
+		}
+	});
+
+});
+  
+
+</script>
+
+</html>
