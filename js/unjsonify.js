@@ -4,7 +4,7 @@ var unjsonify = (function() {
 */
 var count = 0;
 var options = {
-    jump: false
+    jump: false,
 }
 
 /*
@@ -47,8 +47,22 @@ function unjsonify(input, params, callback) {
     count = 0;
     //Set params, if any.
     if (typeof params === "object") options = params;
+    
     //Begin Recursion
-    var htmlOut = "<div class='nodes'>"+parseTree(JSON.parse(input))+"</div>";  
+        //Support text or javascript object input of json.
+    switch(typeof input) {
+        case 'object':
+            var htmlOut = "<div class='nodes'>"+parseTree(input)+"</div>";
+            break;
+        case 'text':
+            var htmlOut = "<div class='nodes'>"+parseTree(JSON.parse(input))+"</div>";
+            break;
+        default:
+            var htmlOut = "<div class='nodes'>"+parseTree(JSON.parse(input))+"</div>";
+            break;
+    }
+    
+  
     //Send user back their lovely html.
     callback(htmlOut);
 }
