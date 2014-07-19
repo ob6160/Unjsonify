@@ -1,0 +1,53 @@
+<DOCTYPE html>
+<html>
+<head>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/unjsonify.js"></script>
+    <link href="css/styles.css" media="all" rel="stylesheet" type="text/css" />
+</head>
+
+<div class="container">
+
+
+
+</div>
+
+<!--Fill with ipsum json-->
+<textarea id="jsonText" placeholder="Enter your json here.. don't be shy :)"></textarea>
+
+<script>
+var json = {"bindings": [
+        {"ircEvent": "PRIVMSG", "method": "newURI", "regex": "^http://.*"},
+        {"ircEvent": "PRIVMSG", "method": "deleteURI", "regex": "^delete.*"},
+        {"ircEvent": "PRIVMSG", "method": "randomURI", "regex": "^random.*"}
+    ]
+};
+
+
+$(document).ready(function() {
+    //Init with basic json file
+    unjsonify(json, { jump: true }, function(data){
+                 $(".container").html("");
+                 $(".container").append(data);
+    });
+
+	$(document).on("click", "a.expandable", function(){
+        $(this).parent().children('div').toggle();
+});
+
+$('#jsonText').keypress(function(e) {
+		if(e.charCode === 13) {
+            
+            unjsonify($(this).val(), { jump: true }, function(data){
+                 $(".container").html("");
+                 $(".container").append(data);
+            });
+		}
+	});
+
+});
+  
+
+</script>
+
+</html>
