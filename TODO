@@ -1,0 +1,12 @@
+TODO
+========
+
+Parse data types (if required). E.g parse images as <img>, links as <a> etc..
+Clean up node generation, split into smaller chunks for the creation of each seperate class of element.
+Styling.
+
+
+Features
+=========
+Add reverse functionality, (parse html lists into json).
+	-> Allow users to edit values in list and see changes reflected in source json.
