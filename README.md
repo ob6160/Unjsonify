@@ -15,5 +15,5 @@ To use in your project:
                  
     });
 
-
-Demo: http://ob6160.github.io/Unjsonify/
+Page: http://ob6160.github.io/Unjsonify/
+Demo: http://ob6160.github.io/Unjsonify/jsonify-demo/
